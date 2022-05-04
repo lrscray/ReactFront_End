@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+//import Router details. 
+//Note to self: using updated router package v6 not v5
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
+import './App.css';
+import Header from './components/Header'
+import MainPage from './pages/MainPage'
+import NotePage from "./pages/NotePage";
+
+//routing path to home page ex: "/"
+//As well as other pages 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <div className="container light">
+          <div className="app">
+            <Header />
+            <Routes>
+              <Route path="/" exact element={<MainPage />} />
+              <Route path="/note/:id" element={<NotePage />} />
+            </Routes>
+          </div>
+        </div>
+        </Router>
     </div>
+    
   );
 }
 
